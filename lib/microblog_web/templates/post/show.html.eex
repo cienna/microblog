@@ -7,11 +7,6 @@
     <%= @post.body %>
   </li>
 
-  <li>
-    <strong>Created timestamp:</strong>
-    <%= @post.created_timestamp %>
-  </li>
-
 </ul>
 
 <span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>

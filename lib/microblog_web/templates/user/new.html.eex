@@ -1,0 +1,9 @@
+<h1 class="my-3">Join Us</h1>
+
+<%= render "form.html", Map.put(assigns, :action, user_path(@conn, :create)) %>
+
+<!-- Already one of us? <a href="#">Log in.</a> -->
+
+<p>&nbsp</p>
+
+<span><%= link "Back", to: user_path(@conn, :index) %></span>

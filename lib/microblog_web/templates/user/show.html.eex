@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col text-center">
+      <h1>About User <a href="#">@<%= @user.username %></a></h1>
+      <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
+      <p>Email: <%= @user.email %></p>
+    </div>
+  </div>
+</div>
+
+<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
+<span><%= link "Back", to: user_path(@conn, :index) %></span>
