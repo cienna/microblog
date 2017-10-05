@@ -21,4 +21,4 @@
   </tbody>
 </table>
 
-<span><%= link "New Follow", to: follow_path(@conn, :new) %></span>
+<!-- <span>< link "New Follow", to: follow_path(@conn, :new) %></span> -->

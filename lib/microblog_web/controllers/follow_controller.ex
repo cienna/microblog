@@ -15,6 +15,10 @@ defmodule MicroblogWeb.FollowController do
   end
 
   def create(conn, %{"follow" => follow_params}) do
+    current_user = get_session(conn, :current_user)
+    followed_user = get_session(conn, :user)
+    Map.put(follow_params, "following_user_id", current_user)
+    Map.put(follow_params, "followed_user_id", followed_user)
     case Social.create_follow(follow_params) do
       {:ok, follow} ->
         conn

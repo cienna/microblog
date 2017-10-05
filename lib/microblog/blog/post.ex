@@ -6,7 +6,7 @@ defmodule Microblog.Blog.Post do
 
   schema "posts" do
     field :body, :string
-    field :created_timestamp, :utc_datetime
+    belongs_to :user, Microblog.Accounts.User
 
     timestamps()
   end
@@ -14,7 +14,7 @@ defmodule Microblog.Blog.Post do
   @doc false
   def changeset(%Post{} = post, attrs) do
     post
-    |> cast(attrs, [:body, :created_timestamp])
-    |> validate_required([:body, :created_timestamp])
+    |> cast(attrs, [:body, :user_id])
+    |> validate_required([:body])
   end
 end

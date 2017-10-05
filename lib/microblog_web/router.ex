@@ -21,7 +21,7 @@ defmodule MicroblogWeb.Router do
     get "/", PageController, :index
     resources "/posts", PostController
     resources "/users", UserController
-    resources "/follows", FollowController
+    resources "/follows", FollowController, except: [:new, :show, :edit]
     # following two lines from NuMart Code.
     post "/sessions", SessionController, :login
     delete "/sessions", SessionController, :logout

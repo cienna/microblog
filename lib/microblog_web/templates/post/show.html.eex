@@ -1,13 +1,18 @@
-<h2>Show Post</h2>
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <div class="card my-2 mx-auto" style="width: 30rem;">
+        <div class="card-body">
+          <p class="card-text"><%= @post.body %></p>
+          <h6 class="card-subtitle mb-2 text-muted">
+            <%= link "#{@post.user.username}", to: user_path(@conn, :show, @post.user_id) %></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<ul>
-
-  <li>
-    <strong>Body:</strong>
-    <%= @post.body %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
+<%= if @current_user === @post.user do %>
+  <span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
+<% end %>
 <span><%= link "Back", to: post_path(@conn, :index) %></span>

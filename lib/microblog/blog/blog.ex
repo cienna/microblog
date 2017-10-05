@@ -37,6 +37,13 @@ defmodule Microblog.Blog do
   """
   def get_post!(id), do: Repo.get!(Post, id)
 
+  def get_user_posts(user_id) do
+    Repo.all(
+      from p in Post,
+      where: p.user_id == ^user_id
+    )
+  end
+
   @doc """
   Creates a post.
 

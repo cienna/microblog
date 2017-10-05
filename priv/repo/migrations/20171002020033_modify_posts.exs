@@ -3,7 +3,7 @@ defmodule Microblog.Repo.Migrations.ModifyPosts do
 
   def change do
     alter table("posts") do
-      add :user, references(:users, on_delete: :delete_all), null: false
+      add :user_id, references(:users, on_delete: :delete_all), null: false
     end
 
   end

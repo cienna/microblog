@@ -1,11 +1,12 @@
 defmodule MicroblogWeb.PostController do
+  require Logger
   use MicroblogWeb, :controller
 
   alias Microblog.Blog
   alias Microblog.Blog.Post
 
   def index(conn, _params) do
-    posts = Blog.list_posts()
+    posts = Blog.list_posts() |> Microblog.Repo.preload(:user)
     render(conn, "index.html", posts: posts)
   end
 
@@ -15,6 +16,9 @@ defmodule MicroblogWeb.PostController do
   end
 
   def create(conn, %{"post" => post_params}) do
+    user_id = get_session(conn, :user_id)
+    post_params = Map.put(post_params, "user_id", user_id)
+    IO.inspect("what the hell")
     case Blog.create_post(post_params) do
       {:ok, post} ->
         conn
@@ -26,7 +30,7 @@ defmodule MicroblogWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Blog.get_post!(id)
+    post = Blog.get_post!(id) |> Microblog.Repo.preload(:user)
     render(conn, "show.html", post: post)
   end
 

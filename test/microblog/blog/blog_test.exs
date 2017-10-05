@@ -6,9 +6,9 @@ defmodule Microblog.BlogTest do
   describe "posts" do
     alias Microblog.Blog.Post
 
-    @valid_attrs %{body: "some body", created_timestamp: "2010-04-17 14:00:00.000000Z"}
-    @update_attrs %{body: "some updated body", created_timestamp: "2011-05-18 15:01:01.000000Z"}
-    @invalid_attrs %{body: nil, created_timestamp: nil}
+    @valid_attrs %{body: "some body"}
+    @update_attrs %{body: "some updated body"}
+    @invalid_attrs %{body: nil}
 
     def post_fixture(attrs \\ %{}) do
       {:ok, post} =
@@ -32,7 +32,6 @@ defmodule Microblog.BlogTest do
     test "create_post/1 with valid data creates a post" do
       assert {:ok, %Post{} = post} = Blog.create_post(@valid_attrs)
       assert post.body == "some body"
-      assert post.created_timestamp == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
     end
 
     test "create_post/1 with invalid data returns error changeset" do
@@ -44,7 +43,6 @@ defmodule Microblog.BlogTest do
       assert {:ok, post} = Blog.update_post(post, @update_attrs)
       assert %Post{} = post
       assert post.body == "some updated body"
-      assert post.created_timestamp == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
     end
 
     test "update_post/2 with invalid data returns error changeset" do

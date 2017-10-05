@@ -7,7 +7,7 @@
       <div class="col-md">
         <div class="card my-2" style="width: 20rem;">
           <div class="card-body">
-            <h4 class="card-title"><span><%= link "@USERNAME", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
+            <h4 class="card-title"><span><%= link "@#{ user.username }", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
 </h4>
             <h6 class="card-subtitle mb-2 text-muted"><%= user.first_name %> <%= user.last_name %></h6>
             <p class="card-text"><%= user.email %></p>

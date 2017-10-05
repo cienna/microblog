@@ -9,6 +9,7 @@ defmodule Microblog.Accounts.User do
     field :first_name, :string
     field :last_name, :string
     field :username, :string
+    has_many :follows, Microblog.Social.Follow
 
     timestamps()
   end

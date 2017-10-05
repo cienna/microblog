@@ -22,6 +22,7 @@ defmodule MicroblogWeb.SessionController do
   end
 
   def logout(conn, _args) do
+    IO.puts "logout reached"
     conn
     |> put_session(:user_id, nil)
     |> put_flash(:info, "Logged out.")

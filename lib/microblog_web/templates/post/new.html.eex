@@ -1,4 +1,4 @@
-<h2>New Post</h2>
+<h2 class="my-3">Shout into the void.</h2>
 
 <%= render "form.html", Map.put(assigns, :action, post_path(@conn, :create)) %>
 
