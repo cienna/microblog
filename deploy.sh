@@ -1,4 +1,5 @@
 #!/bin/bash
+# taken from numart lecture notes with slight modifications
 
 export PORT=8000
 DIR=$1

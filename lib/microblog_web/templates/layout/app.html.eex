@@ -14,27 +14,10 @@
   <body>
 
     <nav class="navbar navbar-dark navbar-expand-md bg-darkgreen">
-      <a class="navbar-brand" href="#">The Void</a>
+      <%= link "The Void", to: page_path(@conn, :index), class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <!--
-           <%= if @current_user do %>
-           <span class="text-light">
-           <%= @current_user.email %> |
-           <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
-           </span>
-
-           <% else %>
-           <%= form_for @conn, session_path(@conn, :login),
-           [as: "user", class: "form-inline w-75"], fn f -> %>
-           <input type="text" placeholder="email" 
-           class="form-control" name="email">
-           <input type="submit" value="Log in" class="btn btn-primary">
-           <% end %>
-           <% end %>
-         -->
 
       <%= if @current_user do %>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -53,24 +36,13 @@
               <%= link "Logout", to: session_path(@conn, :logout), method: :delete, class: "nav-link" %>
             </li>
           </ul>
-      <% else %>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <%= form_for @conn, session_path(@conn, :login),
-          [as: "user", class: "form-inline w-75"], fn f -> %>
-          <input type="text" placeholder="username" class="form-control" name="username">
-          <button class="btn btn-light my-2 my-sm-0 m-1" type="submit">Log in</button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <% end %>
-<% end %>
 
-
-  <form class="form-inline">
-    <input type="text" placeholder="Search the void" class="form-control">
-    <button class="btn btn-light my-2 my-sm-0 m-1" type="submit">Do it</button>
-  </form>
-</div>
+      <form class="form-inline">
+        <input type="text" placeholder="Search the void" class="form-control">
+        <button class="btn btn-light my-2 my-sm-0 m-1" type="submit">Do it</button>
+      </form>
+        </div>
     </nav>
 
     <div class="container">

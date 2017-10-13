@@ -12,20 +12,19 @@ defmodule MicroblogWeb.SessionController do
       conn
       |> put_session(:user_id, user.id)
       |> put_flash(:info, "Logged in as #{user.username}")
-      |> redirect(to: post_path(conn, :index))
+      |> redirect(to: page_path(conn, :feed))
     else
       conn
       |> put_session(:user_id, nil)
       |> put_flash(:error, "No such user")
-      |> redirect(to: user_path(conn, :new))
+      |> redirect(to: page_path(conn, :index))
     end
   end
 
   def logout(conn, _args) do
-    IO.puts "logout reached"
     conn
     |> put_session(:user_id, nil)
     |> put_flash(:info, "Logged out.")
-    |> redirect(to: user_path(conn, :new))
+    |> redirect(to: page_path(conn, :index))
   end
 end

@@ -19,6 +19,7 @@ defmodule MicroblogWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/feed", PageController, :feed
     resources "/posts", PostController
     resources "/users", UserController
     resources "/follows", FollowController, except: [:new, :show, :edit]
