@@ -5,6 +5,9 @@ defmodule MicroblogWeb.PostController do
   alias Microblog.Blog
   alias Microblog.Blog.Post
 
+  import Microblog.Reactions
+  import Microblog.Reactions.Like
+
   def index(conn, _params) do
     posts = Blog.list_posts() |> Microblog.Repo.preload(:user)
     render(conn, "index.html", posts: posts)
@@ -18,7 +21,6 @@ defmodule MicroblogWeb.PostController do
   def create(conn, %{"post" => post_params}) do
     user_id = get_session(conn, :user_id)
     post_params = Map.put(post_params, "user_id", user_id)
-    IO.inspect("what the hell")
     case Blog.create_post(post_params) do
       {:ok, post} ->
         conn
@@ -31,7 +33,7 @@ defmodule MicroblogWeb.PostController do
 
   def show(conn, %{"id" => id}) do
     post = Blog.get_post!(id) |> Microblog.Repo.preload(:user)
-    render(conn, "show.html", post: post)
+    render(conn, "show.html", liked: get_user_like_for_post(%{"user_id" => conn.assigns[:current_user].id, "post_id" => post.id}), post: post)
   end
 
   def edit(conn, %{"id" => id}) do

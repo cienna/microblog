@@ -8,6 +8,8 @@ defmodule Microblog.Blog do
 
   alias Microblog.Blog.Post
 
+  import Microblog.Reactions.Like
+
   @doc """
   Returns the list of posts.
 

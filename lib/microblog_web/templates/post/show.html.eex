@@ -16,3 +16,31 @@
   <span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
 <% end %>
 <span><%= link "Back", to: post_path(@conn, :index) %></span>
+
+<div id="post-likes"
+     data-path="<%= like_path(@conn, :index) %>"
+     data-post_id="<%= @post.id %>">
+  &nbsp;
+</div>
+
+<%= if !@liked do %>
+<button id="like-add-button" class="btn btn-primary"
+        data-user-id="<%= @current_user.id %>"
+        data-post-id="<%= @post.id %>">Like</button>
+<% else %>
+<button id="like-remove-button" class="btn btn-dark"
+        data-user-id="<%= @current_user.id %>"
+        data-post-id="<%= @post.id %>">Unlike</button>
+<% end %>
+
+<script id="likes-template" type="text/x-handlebars-template">
+  <div class="m-3">
+    <h3>Likes</h3>
+
+    {{#each data}}
+    <p>{{user_username}} likes this.</p>
+
+    <p>No likes yet.</p>
+    {{/each}}
+  </div>
+</script>
