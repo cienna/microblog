@@ -1,0 +1,16 @@
+<div class="container">
+  <%= for post <- @posts do %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card my-2 mx-auto" style="width: 30rem;">
+          <div class="card-body">
+            <p class="card-text"><%= post.body %><p>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <span><%= link "#{post.user.username}", to: user_path(@conn, :show, post.user_id), class: "btn btn-default btn-xs" %></span>
+              </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

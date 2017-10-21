@@ -17,8 +17,13 @@ defmodule MicroblogWeb.FeedChannel do
 
   # It is also common to receive messages from the client and
   # broadcast to everyone in the current topic (feed:lobby).
-  def handle_in("shout", payload, socket) do
-    broadcast socket, "shout", payload
+  def handle_in("new_post", %{"body" => body}, socket) do
+    broadcast socket, "new_post", %{body: body}
+    {:noreply, socket}
+  end
+
+  def handle_out("new_post", payload, socket) do
+    push socket, "new_post", payload
     {:noreply, socket}
   end
 

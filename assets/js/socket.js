@@ -53,10 +53,48 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
+
+
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+/*let channel = socket.channel("feed:lobby", {});
+let feedInput = document.querySelector("#feed-input");
+let feedContainer = document.querySelector("#feed");
+
+if (feedInput) {
+feedInput.addEventListener("keypress", event => {
+  //FIXME: needs different if statement
+  if(event.keyCode === 13){
+    channel.push("new_post", {body: feedInput.value});
+    feedInput.value = "";
+  }
+});
+}
+
+// can do on click
+
+channel.on("new_post", payload => {
+  let postItem = document.createElement("div", {class: "row"});
+*/
+ /*  let divCol = document.createElement("div", {class: "col-md-12"});
+  let divCard = document.createElement("div", {class: "card my-2 mx-auto", style: "width: 30rem;"});
+  let cardBody = document.createElement("div", {class: "card-body"});
+  let cardText = document.createElement("p", {class: "card-text"})
+
+  cardText.innerText = `${payload.body}`
+  cardBody.innerText = cardText
+  divCard.innerText = cardBody
+  divCol.innerText = divCard
+  postItem.innerText = divCol
+ */
+/*
+  postItem.innerText =`${payload.body}`;
+
+  feedContainer.insertBefore(postItem, feedContainer.firstChild);
+});
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) });
+ */
 
 export default socket

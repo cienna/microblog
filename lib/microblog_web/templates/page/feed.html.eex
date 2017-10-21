@@ -1,12 +1,36 @@
+<!-- <input id="feed-input" type="text"></input> -->
+
+<!--
+<div id="feed">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card my-2 mx-auto" style="width: 30rem;">
+        <div class="card-body">
+          <p class="card-text"> post_body </p>
+          <h6 class="card-subtitle mb-2 text-muted">
+            <span> username_and_link </span>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+
 <div class="container">
-  <%= for post <- @posts do %>
+  <%= for post <- Enum.reverse(@posts) do %>
     <div class="row">
       <div class="col-md-12">
         <div class="card my-2 mx-auto" style="width: 30rem;">
           <div class="card-body">
-            <p class="card-text"><%= post.body %><p>
+            <p class="card-text"><%= post.body %></p>
               <h6 class="card-subtitle mb-2 text-muted">
-                <span><%= link "#{post.user.username}", to: user_path(@conn, :show, post.user_id), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "@#{post.user.username}",
+                      to: user_path(@conn, :show, post.user_id),
+                      class: "btn btn-default btn-xs" %>
+                    | <%= link "View Post",
+                      to: post_path(@conn, :show, post.id) %></span>
               </h6>
           </div>
         </div>

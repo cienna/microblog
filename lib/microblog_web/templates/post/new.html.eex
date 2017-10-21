@@ -1,5 +1,7 @@
 <h2 class="my-3">Shout into the void.</h2>
 
-<%= render "form.html", Map.put(assigns, :action, post_path(@conn, :create)) %>
+<div id="new-post-page"
+     <%= render "form.html", Map.put(assigns, :action, post_path(@conn, :create)) %>
+</div>
 
 <span><%= link "Back", to: post_path(@conn, :index) %></span>
