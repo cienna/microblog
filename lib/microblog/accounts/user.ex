@@ -1,3 +1,5 @@
+# password code references NuMart
+
 defmodule Microblog.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
