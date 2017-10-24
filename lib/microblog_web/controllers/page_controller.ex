@@ -3,6 +3,7 @@ defmodule MicroblogWeb.PageController do
 
   import Ecto.Query, warn: false
   alias Microblog.Repo
+  alias Microblog.Blog
   alias Microblog.Blog.Post
   alias Microblog.Accounts
   alias Microblog.Accounts.User
@@ -18,7 +19,8 @@ defmodule MicroblogWeb.PageController do
 
   def feed(conn, _params) do
     posts = list_posts(conn, "garbage") |> Repo.preload(:user)
-    render(conn, "feed.html", posts: posts)
+    post = Blog.change_post(%Post{})
+    render(conn, "feed.html", posts: posts, post: post)
   end
 
   defp list_posts(conn, _params) do

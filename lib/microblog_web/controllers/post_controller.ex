@@ -6,7 +6,6 @@ defmodule MicroblogWeb.PostController do
   alias Microblog.Blog.Post
 
   import Microblog.Reactions
-  import Microblog.Reactions.Like
 
   def index(conn, _params) do
     posts = Blog.list_posts() |> Microblog.Repo.preload(:user)
@@ -25,7 +24,7 @@ defmodule MicroblogWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: post_path(conn, :show, post))
+        |> redirect(to: page_path(conn, :feed))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

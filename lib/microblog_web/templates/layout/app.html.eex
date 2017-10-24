@@ -26,9 +26,10 @@
           </span>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li>  </li>
-            <li class="nav-item active">
+<!--            <li class="nav-item active">
               <%= link "New Post", to: post_path(@conn, :new), class: "nav-link" %>
-            </li>
+    </li>
+    -->
             <li class="nav-item active">
               <%= link "Profile", to: user_path(@conn, :show, @current_user), class: "nav-link" %>
             </li>
@@ -38,10 +39,11 @@
           </ul>
       <% end %>
 
-      <form class="form-inline">
+<!--       <form class="form-inline">
         <input type="text" placeholder="Search the void" class="form-control">
         <button class="btn btn-light my-2 my-sm-0 m-1" type="submit">Do it</button>
       </form>
+      -->
         </div>
     </nav>
 

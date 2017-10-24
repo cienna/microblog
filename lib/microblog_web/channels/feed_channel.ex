@@ -1,6 +1,8 @@
 defmodule MicroblogWeb.FeedChannel do
   use MicroblogWeb, :channel
 
+  intercept(["new_post"])
+
   def join("feed:lobby", payload, socket) do
     if authorized?(payload) do
       {:ok, socket}

@@ -25,7 +25,7 @@ import socket from "./socket";
 let handlebars = require("handlebars");
 
 $(function() {
-  if($("#new-post-page")[0]) {
+  if($("#feed-page")[0]) {
     var chan;
 //    let bs = document.querySelector("#submit-button");
     let feedContainer = document.querySelector("#feed");
@@ -37,8 +37,9 @@ $(function() {
 
     form.addEventListener("submit", send_post_update, {passive: true});
 
-    function send_post_update(){
-      chan.push("new_post", {body: "ha"});
+    function send_post_update(event){
+      console.log(event.toString());
+      chan.push("new_post", {body: event.toString()});
       console.log("pushed");
     };
 
@@ -60,7 +61,8 @@ $(function() {
          divCard.innerText = cardBody
          divCol.innerText = divCard
          postItem.innerText = divCol
-         */
+ */
+
         postItem.innerText =`${payload.body}`;
 
         feedContainer.insertBefore(postItem, feedContainer.firstChild);
@@ -128,3 +130,4 @@ $(function() {
     return;
   }
 });
+
